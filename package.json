@@ -1,0 +1,32 @@
+{
+  "name": "whop-roofing-template",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Production-ready roofing company website template on Whop Websites: Payment Elements checkout, Leads, card-on-file deposits, Invoices API final billing, and whop.track pixel events.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "whop apps deploy",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "setup:plans": "node scripts/setup-plans.mjs"
+  },
+  "dependencies": {
+    "@whop/elements": "1.10.0",
+    "@whop/elements-react": "1.10.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.70.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "@whop/cli": "1.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.0",
+    "wrangler": "^4.164.0"
+  }
+}

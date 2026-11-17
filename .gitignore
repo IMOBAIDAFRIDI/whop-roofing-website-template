@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+.env.*
+*.log
+.DS_Store
+CREW_ADMIN_KEY.txt
+.wrangler
+.dev.vars*
