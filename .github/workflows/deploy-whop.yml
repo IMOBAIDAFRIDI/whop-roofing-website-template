@@ -1,0 +1,41 @@
+# Auto-deploy to Whop hosting on every push to main.
+#
+# One-time setup:
+#   1. Create an API key at https://whop.com/dashboard/developer
+#      (business: OURA Softwares) with app/build permissions.
+#   2. Add it to this repo: Settings → Secrets and variables → Actions →
+#      New repository secret → Name: WHOP_API_KEY
+name: Deploy to Whop
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: whop-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy (build, typecheck, upload, promote)
+        env:
+          WHOP_API_KEY: ${{ secrets.WHOP_API_KEY }}
+        run: |
+          if [ -z "$WHOP_API_KEY" ]; then
+            echo "::error::WHOP_API_KEY secret is not set. See the comment at the top of this workflow."
+            exit 1
+          fi
+          npx whop apps deploy
