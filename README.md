@@ -1,5 +1,7 @@
 # Roofing Company Website Template (Whop Websites)
 
+**Live demo:** https://oura-summit-roofing.whop.site (add `?debug=1` to watch `whop.track` events live)
+
 A production-ready, rebrandable website for a US roofing contractor, built on **Whop Websites** and deployed to a whop.app / whop.site address. It shows a roofer's full money flow on Whop, end to end:
 
 **estimate request (Lead) → inspection fee or deposit (Payment Elements) → card on file (Setup Intent) → final balance (Invoices API)**, with custom `whop.track` pixel events at every step.
